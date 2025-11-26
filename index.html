@@ -269,23 +269,15 @@
                 // Increment counter in background
                 incrementGlobalCounter();
 
-                // Gemini Proxy Call - Reverted to text proxy for production
+                // Gemini Proxy Call - Using proper mode/payload format
                 const response = await fetch("https://gemini3proxy-ce7zb66hpq-uc.a.run.app", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({
-                        model: "gemini-1.5-flash",
-                        // Loosen safety settings to allow for paradoxes
-                        safetySettings: [
-                            { category: "HARM_CATEGORY_HARASSMENT", threshold: "BLOCK_NONE" },
-                            { category: "HARM_CATEGORY_HATE_SPEECH", threshold: "BLOCK_NONE" },
-                            { category: "HARM_CATEGORY_SEXUALLY_EXPLICIT", threshold: "BLOCK_NONE" },
-                            { category: "HARM_CATEGORY_DANGEROUS_CONTENT", threshold: "BLOCK_NONE" }
-                        ],
-                        contents: [{ 
-                            role: "user",
-                            parts: [{ text: "You are a Zen Master. Generate a NEW, original Koan. It should be short (1-2 sentences), paradoxical, confusing, or absurd in a profound way. Focus on timeless themes: nature, the void, the self, and silence. Occasionally (1 in 5 times) you may include a subtle modern or digital metaphor, but mostly keep it elemental. Do not explain it. Do not start with 'Koan:'. Just the text.\n\nTask: Give me a koan to break my logic." }] 
-                        }]
+                        mode: "generateKoan",
+                        payload: {
+                            prompt: "You are a Zen Master. Generate a NEW, original Koan. It should be short (1-2 sentences), paradoxical, confusing, or absurd in a profound way. Focus on timeless themes: nature, the void, the self, and silence. Occasionally (1 in 5 times) you may include a subtle modern or digital metaphor, but mostly keep it elemental. Do not explain it. Do not start with 'Koan:'. Just the text.\n\nTask: Give me a koan to break my logic."
+                        }
                     })
                 });
 
@@ -296,6 +288,7 @@
                 const data = await response.json();
                 
                 // --- ROBUST ERROR HANDLING ---
+                // Gemini 3 Pro returns content in candidates array
                 let rawText = data.candidates?.[0]?.content?.parts?.[0]?.text;
 
                 // If API fails or filters content, use Fallback (The "Ancient Scroll" method)
