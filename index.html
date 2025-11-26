@@ -307,17 +307,20 @@
                 // Increment counter in background
                 incrementGlobalCounter();
 
-                // Gemini Proxy Call - OpenAI-compatible format
-                const response = await fetch("https://gemini3proxy-ce7zb66hpq-uc.a.run.app", {
+                // Gemini Proxy Call - Using genartProxy with mode
+                const response = await fetch("https://genartproxy-ce7zb66hpq-uc.a.run.app", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({
-                        messages: [
-                            {
-                                role: "user",
-                                content: "You are a Zen Master. Generate a NEW, original Koan. It should be short (1-2 sentences), paradoxical, confusing, or absurd in a profound way. Focus on timeless themes: nature, the void, the self, and silence. Occasionally (1 in 5 times) you may include a subtle modern or digital metaphor, but mostly keep it elemental. Do not explain it. Do not start with 'Koan:'. Just the text.\n\nTask: Give me a koan to break my logic."
-                            }
-                        ]
+                        mode: "generateText",
+                        payload: {
+                            messages: [
+                                {
+                                    role: "user",
+                                    content: "You are a Zen Master. Generate a NEW, original Koan. It should be short (1-2 sentences), paradoxical, confusing, or absurd in a profound way. Focus on timeless themes: nature, the void, the self, and silence. Occasionally (1 in 5 times) you may include a subtle modern or digital metaphor, but mostly keep it elemental. Do not explain it. Do not start with 'Koan:'. Just the text.\n\nTask: Give me a koan to break my logic."
+                                }
+                            ]
+                        }
                     })
                 });
 
@@ -328,8 +331,8 @@
                 const data = await response.json();
                 
                 // --- ROBUST ERROR HANDLING ---
-                // OpenAI format returns content in choices array
-                let rawText = data.choices?.[0]?.message?.content;
+                // Gemini API returns content in candidates array
+                let rawText = data.candidates?.[0]?.content?.parts?.[0]?.text;
 
                 // If API fails or filters content, use Fallback (The "Ancient Scroll" method)
                 if (!rawText) {
