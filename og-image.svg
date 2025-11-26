@@ -1,0 +1,20 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Spectral:wght@300;600&amp;display=swap');
+        </style>
+    </defs>
+    
+    <!-- Background -->
+    <rect width="1200" height="630" fill="#f4f1ea"/>
+
+    <!-- Main Title -->
+    <text x="100" y="300" font-family="'Spectral', serif" font-size="90" font-weight="600" fill="#2b2b2b">
+        koan.im
+    </text>
+
+    <!-- Subtitle -->
+    <text x="100" y="380" font-family="'Spectral', serif" font-size="42" font-weight="300" fill="#2b2b2b" opacity="0.8">
+        A digital monument to the unanswerable.
+    </text>
+</svg>
