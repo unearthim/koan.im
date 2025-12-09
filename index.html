@@ -1,6 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "VisualArtwork",
+          "@id": "https://koan.im/#content",
+          "url": "https://koan.im",
+          "name": "koan.im | Digital Riddles",
+          "description": "A digital monument to the unanswerable. Generate unique Zen Koans powered by AI.",
+          "artMedium": "Interactive AI-Generated Text",
+          "artForm": "Digital Monument",
+          "inLanguage": "en-US",
+          "datePublished": "2024-12-01",
+          "publisher": { "@id": "https://unearth.im/#organization" },
+          "isPartOf": { "@id": "https://koan.im/#website" },
+          "author": [
+            { "@id": "https://josiest.com/#person" },
+            { "@id": "https://felixvelas.co/#person" }
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://koan.im/#website",
+          "url": "https://koan.im",
+          "name": "koan.im",
+          "publisher": { "@id": "https://unearth.im/#organization" }
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://unearth.im/#organization",
+          "name": "unearth.im",
+          "url": "https://unearth.im",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://unearth.im/favicon-32x32.png"
+          },
+          "foundingDate": "2024",
+          "sameAs": [
+            "https://twitter.com/unearthim",
+            "https://github.com/unearthim"
+          ]
+        },
+        {
+          "@type": "Person",
+          "@id": "https://josiest.com/#person",
+          "name": "Josie Jefferson",
+          "url": "https://josiest.com",
+          "jobTitle": "Digital Archaeologist & Trust Architect",
+          "affiliation": { "@id": "https://unearth.im/#organization" },
+          "sameAs": ["https://notjojo.im"]
+        },
+        {
+          "@type": "Person",
+          "@id": "https://felixvelas.co/#person",
+          "name": "Felix Velasco",
+          "url": "https://felixvelas.co",
+          "jobTitle": "Trust Architect & Digital Archaeologist",
+          "affiliation": { "@id": "https://unearth.im/#organization" },
+          "sameAs": ["https://www.linkedin.com/in/felix-velasco-b793015"]
+        }
+      ]
+    }
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -181,7 +246,10 @@
             <span>Global Contemplations: <span id="counter-display" class="counter-num">...</span></span>
         </div>
         <div class="text-[10px] text-gray-400 font-sans tracking-widest opacity-60">
-            a digital monument by <a href="https://unearth.im" target="_blank" rel="noopener noreferrer" class="hover:text-[var(--ink-color)] transition-colors duration-300 border-b border-transparent hover:border-[var(--ink-color)] pb-0.5">unearth.im</a>
+            <small>
+                a <b><a href="https://sentientification.com" target="_blank" rel="noopener noreferrer" class="hover:text-[var(--ink-color)] transition-colors duration-300 border-b border-transparent hover:border-[var(--ink-color)] pb-0.5">liminal mind meld</a></b> collaboration:<br>
+                digital monument by <b><a href="https://unearth.im" target="_blank" rel="noopener noreferrer" class="hover:text-[var(--ink-color)] transition-colors duration-300 border-b border-transparent hover:border-[var(--ink-color)] pb-0.5">unearth.im</a></b> | <b><a href="https://archaeobytology.org" target="_blank" rel="noopener noreferrer" class="hover:text-[var(--ink-color)] transition-colors duration-300 border-b border-transparent hover:border-[var(--ink-color)] pb-0.5">archive & anvil</a></b>
+            </small>
         </div>
     </footer>
 
